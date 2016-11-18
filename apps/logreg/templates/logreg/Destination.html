@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Destination!</title>
+</head>
+<body>
+	<p><a href="{% url 'my_users:success' %}">Home</a></p>
+	<p><a href="{% url 'my-users:logout' %}">Logout</a></p>
+	<h1>{{trip.destination}}</h1>
+	<h1>Other user's joing the trip:</h1>
+	{{item.first_name}} {{item.last_name}}
+	
+</body>
+</html>

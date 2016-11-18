@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Add Plan Page</title>
+</head>
+<body>
+	<h2>Add a Trip</h2>
+	{% if messages %}
+		{% for message in messages %}
+			{{message}}
+		{% endfor %}
+	{% endif %}
+	<p><a href="{% url 'my_users:success' %}">Home</a></p>
+	<p><a href="{% url 'my_users:logout' %}">Logout</a></p>
+	<form action="{% url 'my_users:add_plan' %}" method="post">
+	{% csrf_token %}
+		<p>Destination: <input type="text" name="destination"></p>
+		<p>Description: <input type="text" name="description"></p>
+		<p>Travel Date From: <input type="text" name="date_from"></p>
+		<p>Travel Date To: <input type="text" name="date_to"></p>
+		
+		<input type="submit" value="Add">
+	</form>
+
+</body>
+</html>

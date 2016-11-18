@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Success</title>
+	
+</head>
+<body>
+	{% if messages %}
+		{% for message in messages %}
+		<h3>{{message}}</h3>
+		{% endfor %}
+	{% endif %}
+	<a href="{% url 'my_users:logout' %}">Logout</a>
+	<p>Your Trip Schedules</p>
+	<table>
+		<tr>
+			<th>Destination</th>
+			<th>Travel Start Date</th>
+			<th>Travel End Date</th>
+			<th>Plan</th>
+		</tr>
+		{% for item in trips %}
+		<tr>
+			<td>{{item.destination}}</td>
+			<td>{{item.date_from}}</td>
+			<td>{{item.date_to}}</td>
+			<td>{{item.description}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<p>Other User's Travel Plans</p>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Destination</th>
+				<th>Travel Start Date</th>
+				<th>Travel End Date</th>
+				<th>Do You Want to Join?</th>
+			</tr>
+
+		{% for user in users%}
+			<tr>
+				<td>{{user.first_name}} {{user.last_name}}</td>
+				<td>{{item.destination}}</td>
+				<td>{{item.date_from}}</td>
+				<td>{{item.date_to}}</td>
+				<td><a href="{% url 'logreg:join' id=item.id %}">Join</a></td>	
+			</tr>
+		{% endfor %}
+	<a href="{% url 'my_users:plan' %}">Add Travel Plan</a>
+
+
+</body>
+</html>
